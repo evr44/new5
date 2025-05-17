@@ -122,13 +122,13 @@
   <header>
     <h1>EcoLife Market</h1>
     <nav>
-      <a href="#home">Головна</a>
-      <a href="#catalog">Каталог</a>
-      <a href="#about">Про нас</a>
-      <a href="#contact">Контакти</a>
-      <a href="#cart">Корзина</a>
-      <a href="#delivery">Доставка</a>
-      <a href="#blog">Блог</a>
+      <a href="#home" class="nav-home">Головна</a>
+      <a href="#catalog" class="nav-catalog">Каталог</a>
+      <a href="#about" class="nav-about">Про нас</a>
+      <a href="#contact" class="nav-contact">Контакти</a>
+      <a href="#cart" class="nav-cart">Корзина</a>
+      <a href="#delivery" class="nav-delivery">Доставка</a>
+      <a href="#blog" class="nav-blog">Блог</a>
       <span class="lang-switch">
         <a href="#" onclick="setLang('uk')">UA</a> | <a href="#" onclick="setLang('en')">EN</a>
       </span>
@@ -145,7 +145,7 @@
   <section id="blog"><h2></h2><p></p></section>
 
   <section id="admin">
-    <h2>Адміністрування</h2>
+    <h2 class="admin-header">Адміністрування</h2>
     <div class="admin-login">
       <form>
         <label><span id="loginLabel"></span><br><input type="text" name="username" required></label>
@@ -156,7 +156,7 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 EcoLife Market. Всі права захищені.</p>
+    <p class="footer-text">&copy; 2025 EcoLife Market. Всі права захищені.</p>
   </footer>
 
   <script>
@@ -171,7 +171,18 @@
         blog: { h: "Блог", p: "Читайте наші поради для екожиття та здорового харчування." },
         login: "Логін",
         password: "Пароль",
-        loginBtn: "Увійти"
+        loginBtn: "Увійти",
+        admin: "Адміністрування",
+        footer: "&copy; 2025 EcoLife Market. Всі права захищені.",
+        nav: {
+          home: "Головна",
+          catalog: "Каталог",
+          about: "Про нас",
+          contact: "Контакти",
+          cart: "Корзина",
+          delivery: "Доставка",
+          blog: "Блог"
+        }
       },
       en: {
         home: "Inspired by nature. Live organic — choose EcoLife.",
@@ -183,7 +194,18 @@
         blog: { h: "Blog", p: "Read our tips for eco-living and healthy eating." },
         login: "Login",
         password: "Password",
-        loginBtn: "Sign In"
+        loginBtn: "Sign In",
+        admin: "Administration",
+        footer: "&copy; 2025 EcoLife Market. All rights reserved.",
+        nav: {
+          home: "Home",
+          catalog: "Catalog",
+          about: "About",
+          contact: "Contacts",
+          cart: "Cart",
+          delivery: "Delivery",
+          blog: "Blog"
+        }
       }
     };
 
@@ -196,6 +218,11 @@
       document.getElementById("loginLabel").innerText = content[lang].login;
       document.getElementById("passwordLabel").innerText = content[lang].password;
       document.getElementById("loginBtn").innerText = content[lang].loginBtn;
+      document.querySelector(".admin-header").innerText = content[lang].admin;
+      document.querySelector(".footer-text").innerHTML = content[lang].footer;
+      Object.keys(content[lang].nav).forEach(key => {
+        document.querySelector(".nav-" + key).innerText = content[lang].nav[key];
+      });
     }
 
     setLang('uk');
